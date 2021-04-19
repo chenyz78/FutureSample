@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project name="future" default="jar" basedir=".">
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+    
+    <target name="compile" depends="clean">
+        <mkdir dir="build/classes"/>
+        <javac srcdir="src" destdir="build/classes" includeantruntime="false"/>
+    </target>
+    
+    <target name="run" depends="compile">
+			<java classname="com.future.FutureTaskDemoMain" classpath="build/classes">
+				<classpath>
+					<pathelement path="classes"/>
+				</classpath>
+			</java>
+    </target>
+    
+    <target name="jar" depends="run">
+        <jar destfile="future.jar" basedir="build/classes">
+        	<manifest>
+            	<attribute name="Main-Class" value="FutureTaskDemoMain"/>
+        	</manifest>
+        </jar>
+    </target>
+</project>   
